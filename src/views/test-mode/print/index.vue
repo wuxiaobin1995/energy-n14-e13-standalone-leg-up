@@ -1,7 +1,7 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2022-06-30 15:03:28
- * @LastEditTime: 2022-08-30 10:54:42
+ * @LastEditTime: 2022-10-08 09:04:25
  * @Description : 测试报告打印
 -->
 <template>
@@ -310,30 +310,30 @@ export default {
               if (BMI > 23) {
                 // 公式1
                 this.singleRecommendedValue =
-                  (0.8 * weight - ((height - sqrtWeight) / sqrtWeight) * 140) *
+                  (1.1 * weight - ((height - sqrtWeight) / sqrtWeight) * 140) *
                   (1 - (age - 40) * 0.01)
               } else if (BMI === 23) {
                 // 公式2
                 this.singleRecommendedValue =
-                  0.8 * weight * (1 - (age - 40) * 0.01)
+                  1.1 * weight * (1 - (age - 40) * 0.01)
               } else if (BMI < 23) {
                 // 公式3
                 this.singleRecommendedValue =
-                  (0.8 * weight + ((height - sqrtWeight) / sqrtWeight) * 140) *
+                  (1.1 * weight + ((height - sqrtWeight) / sqrtWeight) * 140) *
                   (1 - (age - 40) * 0.01)
               }
             } else {
               if (BMI > 23) {
                 // 公式4
                 this.singleRecommendedValue =
-                  0.8 * weight - ((height - sqrtWeight) / sqrtWeight) * 140
+                  1.1 * weight - ((height - sqrtWeight) / sqrtWeight) * 140
               } else if (BMI === 23) {
                 // 公式5
-                this.singleRecommendedValue = 0.8 * weight
+                this.singleRecommendedValue = 1.1 * weight
               } else if (BMI < 23) {
                 // 公式6
                 this.singleRecommendedValue =
-                  0.8 * weight + ((height - sqrtWeight) / sqrtWeight) * 140
+                  1.1 * weight + ((height - sqrtWeight) / sqrtWeight) * 140
               }
             }
           } else if (sex === '女') {
@@ -341,17 +341,17 @@ export default {
               if (BMI > 23) {
                 // 公式7
                 this.singleRecommendedValue =
-                  (0.8 * weight - ((height - sqrtWeight) / sqrtWeight) * 140) *
+                  (1.1 * weight - ((height - sqrtWeight) / sqrtWeight) * 140) *
                   0.8 *
                   (1 - (age - 40) * 0.01)
               } else if (BMI === 23) {
                 // 公式8
                 this.singleRecommendedValue =
-                  0.8 * weight * 0.8 * (1 - (age - 40) * 0.01)
+                  1.1 * weight * 0.8 * (1 - (age - 40) * 0.01)
               } else if (BMI < 23) {
                 // 公式9
                 this.singleRecommendedValue =
-                  (0.8 * weight + ((height - sqrtWeight) / sqrtWeight) * 140) *
+                  (1.1 * weight + ((height - sqrtWeight) / sqrtWeight) * 140) *
                   0.8 *
                   (1 - (age - 40) * 0.01)
               }
@@ -359,15 +359,15 @@ export default {
               if (BMI > 23) {
                 // 公式10
                 this.singleRecommendedValue =
-                  (0.8 * weight - ((height - sqrtWeight) / sqrtWeight) * 140) *
+                  (1.1 * weight - ((height - sqrtWeight) / sqrtWeight) * 140) *
                   0.8
               } else if (BMI === 23) {
                 // 公式11
-                this.singleRecommendedValue = 0.8 * weight * 0.8
+                this.singleRecommendedValue = 1.1 * weight * 0.8
               } else if (BMI < 23) {
                 // 公式12
                 this.singleRecommendedValue =
-                  (0.8 * weight + ((height - sqrtWeight) / sqrtWeight) * 140) *
+                  (1.1 * weight + ((height - sqrtWeight) / sqrtWeight) * 140) *
                   0.8
               }
             }
