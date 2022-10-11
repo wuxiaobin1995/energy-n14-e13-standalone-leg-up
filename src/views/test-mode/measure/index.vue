@@ -1,7 +1,7 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2022-06-28 17:47:37
- * @LastEditTime: 2022-07-26 16:14:59
+ * @LastEditTime: 2022-10-11 14:32:11
  * @Description : 测试-具体测量
 -->
 <template>
@@ -720,6 +720,10 @@ export default {
               if (this.$store.state.testSelection.length === 0) {
                 const pdfTime = this.$moment().format('YYYY-MM-DD HH:mm:ss')
                 const hospital = window.localStorage.getItem('hospital')
+                const currentAge = this.$moment().diff(
+                  this.$store.state.currentUserInfo.birthday,
+                  'years'
+                )
                 const db = initDB()
                 db.test_data
                   .add({
@@ -732,6 +736,7 @@ export default {
                     height: this.$store.state.currentUserInfo.height,
                     weight: this.$store.state.currentUserInfo.weight,
                     birthday: this.$store.state.currentUserInfo.birthday,
+                    currentAge: currentAge, // 完成该次测试时的岁数
                     pdfTime: pdfTime,
                     data: this.$store.state.resultValue
                   })

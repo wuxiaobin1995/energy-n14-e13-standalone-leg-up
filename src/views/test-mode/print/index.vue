@@ -1,7 +1,7 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2022-06-30 15:03:28
- * @LastEditTime: 2022-10-08 09:04:25
+ * @LastEditTime: 2022-10-11 14:39:13
  * @Description : 测试报告打印
 -->
 <template>
@@ -257,6 +257,7 @@ export default {
 
       /* 数据相关 */
       testData: {}, // 测试报告源数据
+
       singleRecommendedValue: null, // 单腿推荐值(kg)，精确到0.1kg
       bothRecommendedValue: null, // 双腿推荐值(kg)，精确到0.1kg
       leftValue: null, // 左腿测量值(kg)，精确到0.1kg
@@ -302,25 +303,25 @@ export default {
           const sex = this.testData.sex // 性别
           const height = parseFloat((this.testData.height / 100).toFixed(2)) // 身高(m)
           const weight = this.testData.weight // 体重(kg)
-          const age = this.$moment().diff(this.testData.birthday, 'years') // 年龄(岁)
+          const currentAge = this.testData.currentAge // 当时的岁数
           const BMI = parseInt((weight / height ** 2).toFixed(0))
           const sqrtWeight = Math.sqrt(weight / 23) // 开根号
           if (sex === '男') {
-            if (age >= 41) {
+            if (currentAge >= 41) {
               if (BMI > 23) {
                 // 公式1
                 this.singleRecommendedValue =
                   (1.1 * weight - ((height - sqrtWeight) / sqrtWeight) * 140) *
-                  (1 - (age - 40) * 0.01)
+                  (1 - (currentAge - 40) * 0.01)
               } else if (BMI === 23) {
                 // 公式2
                 this.singleRecommendedValue =
-                  1.1 * weight * (1 - (age - 40) * 0.01)
+                  1.1 * weight * (1 - (currentAge - 40) * 0.01)
               } else if (BMI < 23) {
                 // 公式3
                 this.singleRecommendedValue =
                   (1.1 * weight + ((height - sqrtWeight) / sqrtWeight) * 140) *
-                  (1 - (age - 40) * 0.01)
+                  (1 - (currentAge - 40) * 0.01)
               }
             } else {
               if (BMI > 23) {
@@ -337,23 +338,23 @@ export default {
               }
             }
           } else if (sex === '女') {
-            if (age >= 41) {
+            if (currentAge >= 41) {
               if (BMI > 23) {
                 // 公式7
                 this.singleRecommendedValue =
                   (1.1 * weight - ((height - sqrtWeight) / sqrtWeight) * 140) *
                   0.8 *
-                  (1 - (age - 40) * 0.01)
+                  (1 - (currentAge - 40) * 0.01)
               } else if (BMI === 23) {
                 // 公式8
                 this.singleRecommendedValue =
-                  1.1 * weight * 0.8 * (1 - (age - 40) * 0.01)
+                  1.1 * weight * 0.8 * (1 - (currentAge - 40) * 0.01)
               } else if (BMI < 23) {
                 // 公式9
                 this.singleRecommendedValue =
                   (1.1 * weight + ((height - sqrtWeight) / sqrtWeight) * 140) *
                   0.8 *
-                  (1 - (age - 40) * 0.01)
+                  (1 - (currentAge - 40) * 0.01)
               }
             } else {
               if (BMI > 23) {
