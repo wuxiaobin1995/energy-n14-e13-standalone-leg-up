@@ -1,7 +1,7 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2022-06-23 11:07:48
- * @LastEditTime: 2022-07-26 14:29:55
+ * @LastEditTime: 2022-12-06 21:52:09
  * @Description : 顶部栏
 -->
 <template>
@@ -50,6 +50,9 @@
               divided
               command="开发者"
               >开发者</el-dropdown-item
+            >
+            <el-dropdown-item icon="el-icon-s-data" command="数据迁移"
+              >数据迁移</el-dropdown-item
             >
           </el-dropdown-menu>
         </el-dropdown>
@@ -160,6 +163,22 @@ export default {
             .then(() => {
               this.$router.push({
                 path: '/set-developer'
+              })
+            })
+            .catch(() => {})
+          break
+        case '数据迁移':
+          this.$prompt('请输入密码', '提示', {
+            confirmButtonText: '确定',
+            cancelButtonText: '取消',
+            inputPattern: /^htpm$/,
+            inputErrorMessage: '密码不正确',
+            showClose: true,
+            closeOnClickModal: false
+          })
+            .then(() => {
+              this.$router.push({
+                path: '/set-data-migration'
               })
             })
             .catch(() => {})

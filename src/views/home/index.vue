@@ -1,7 +1,7 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2022-06-23 09:06:38
- * @LastEditTime: 2022-07-26 09:20:59
+ * @LastEditTime: 2022-12-05 22:32:56
  * @Description : home
 -->
 <template>
@@ -265,10 +265,28 @@ export default {
             .catch(() => {})
         }
       } else if (src === 'src6') {
-        this.$message({
-          message: '提示，该功能仍在开发阶段......',
-          type: 'warning'
-        })
+        if (this.$store.state.currentUserInfo.userId) {
+          this.$router.push({
+            path: '/game'
+          })
+        } else {
+          this.$confirm(
+            `检测到您还没有选择用户，请先到用户页面进行选择！`,
+            '提示',
+            {
+              type: 'warning',
+              center: true,
+              showCancelButton: false,
+              confirmButtonText: '确 定'
+            }
+          )
+            .then(() => {
+              this.$router.push({
+                path: '/user'
+              })
+            })
+            .catch(() => {})
+        }
       }
     },
 
