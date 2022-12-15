@@ -1,7 +1,7 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2022-07-25 10:41:03
- * @LastEditTime: 2022-07-25 17:15:28
+ * @LastEditTime: 2022-12-15 11:57:40
  * @Description : MTT数据记录页
 -->
 <template>
@@ -325,22 +325,31 @@ export default {
      * @param {*} row
      */
     handleCheckPdf(index, row) {
-      // 单腿没有报告
-      if (row.trainPart === '左腿' || row.trainPart === '右腿') {
-        this.$message({
-          message: '提示：单腿训练不生成PDF报告！',
-          type: 'warning'
-        })
-      } else {
-        this.$router.push({
-          path: '/mtt-print',
-          query: {
-            userId: JSON.stringify(this.$store.state.currentUserInfo.userId),
-            pdfTime: JSON.stringify(row.pdfTime),
-            routerName: JSON.stringify('/mtt-record')
-          }
-        })
-      }
+      this.$router.push({
+        path: '/mtt-print',
+        query: {
+          userId: JSON.stringify(this.$store.state.currentUserInfo.userId),
+          pdfTime: JSON.stringify(row.pdfTime),
+          routerName: JSON.stringify('/mtt-record')
+        }
+      })
+
+      // // 单腿没有报告
+      // if (row.trainPart === '左腿' || row.trainPart === '右腿') {
+      //   this.$message({
+      //     message: '提示：单腿训练不生成PDF报告！',
+      //     type: 'warning'
+      //   })
+      // } else {
+      //   this.$router.push({
+      //     path: '/mtt-print',
+      //     query: {
+      //       userId: JSON.stringify(this.$store.state.currentUserInfo.userId),
+      //       pdfTime: JSON.stringify(row.pdfTime),
+      //       routerName: JSON.stringify('/mtt-record')
+      //     }
+      //   })
+      // }
     },
 
     /**

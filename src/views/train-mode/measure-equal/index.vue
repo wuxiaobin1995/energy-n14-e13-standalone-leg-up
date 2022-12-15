@@ -1,7 +1,7 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2022-07-07 11:03:06
- * @LastEditTime: 2022-07-20 11:41:37
+ * @LastEditTime: 2022-12-15 14:07:27
  * @Description : 训练-具体测量-等长训练专用
 -->
 <template>
@@ -398,6 +398,7 @@ export default {
                                 type: 'success',
                                 duration: 2000
                               })
+                              this.pdfAllow = true
                             })
                             .catch(() => {
                               this.$alert(
@@ -413,16 +414,6 @@ export default {
                                   }
                                 }
                               )
-                            })
-                            .finally(() => {
-                              if (
-                                this.trainPart === '左腿' ||
-                                this.trainPart === '右腿'
-                              ) {
-                                this.pdfAllow = false
-                              } else {
-                                this.pdfAllow = true
-                              }
                             })
                         }
                       }
@@ -571,7 +562,7 @@ export default {
     },
 
     /**
-     * @description: 查看PDF按钮，单腿没有报告，只有双腿有报告
+     * @description: 查看PDF按钮
      */
     handlePdf() {
       this.$router.push({

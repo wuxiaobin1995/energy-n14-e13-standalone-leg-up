@@ -1,7 +1,7 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2022-07-21 10:27:56
- * @LastEditTime: 2022-07-25 10:21:15
+ * @LastEditTime: 2022-12-15 14:06:21
  * @Description : MTT-具体测量
 -->
 <template>
@@ -484,6 +484,7 @@ export default {
                                 type: 'success',
                                 duration: 2000
                               })
+                              this.pdfAllow = true
                             })
                             .catch(() => {
                               this.$alert(
@@ -499,17 +500,6 @@ export default {
                                   }
                                 }
                               )
-                            })
-                            .finally(() => {
-                              /* 只有双腿训练，才有报告 */
-                              if (
-                                this.trainPart === '左腿' ||
-                                this.trainPart === '右腿'
-                              ) {
-                                this.pdfAllow = false
-                              } else {
-                                this.pdfAllow = true
-                              }
                             })
                         } else {
                           this.$message({
@@ -722,7 +712,7 @@ export default {
     },
 
     /**
-     * @description: 查看PDF按钮，单腿没有报告，只有双腿有报告
+     * @description: 查看PDF按钮
      */
     handlePdf() {
       this.$router.push({
