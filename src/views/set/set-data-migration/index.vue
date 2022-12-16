@@ -1,11 +1,11 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2022-12-06 21:44:39
- * @LastEditTime: 2022-12-06 21:44:44
+ * @LastEditTime: 2022-12-16 10:46:25
  * @Description : 数据迁移
 -->
 <template>
-  <div class="set-developer">
+  <div class="set-data-migration">
     <div class="wrapper">
       <el-page-header
         class="page"
@@ -329,7 +329,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.set-developer {
+.set-data-migration {
   width: 100%;
   height: 100%;
   @include flex(row, center, center);
