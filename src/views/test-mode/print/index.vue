@@ -1,7 +1,7 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2022-06-30 15:03:28
- * @LastEditTime: 2022-10-11 14:39:13
+ * @LastEditTime: 2022-12-19 15:42:52
  * @Description : 测试报告打印
 -->
 <template>
@@ -153,7 +153,7 @@
               <td>推荐值</td>
               <td>得分</td>
               <td>得分</td>
-              <td>训练推荐</td>
+              <td>肌力亏欠</td>
             </tr>
             <tr align="center">
               <td bgcolor="#E7E6E6">左腿蹬伸</td>
@@ -172,14 +172,14 @@
                   )
                 }}
               </td>
-              <td>+{{ leftTrainRecommend }}%</td>
+              <td>+{{ leftTrainRecommend }}kg</td>
             </tr>
             <tr align="center">
               <td bgcolor="#E7E6E6">右腿蹬伸</td>
               <td>{{ rightValue }}</td>
               <td>{{ singleRecommendedValue }}</td>
               <td>{{ rightScore }}({{ rightEvaluateText }})</td>
-              <td>+{{ rightTrainRecommend }}%</td>
+              <td>+{{ rightTrainRecommend }}kg</td>
             </tr>
             <tr align="center">
               <td bgcolor="#E7E6E6">双腿蹬伸</td>
@@ -200,7 +200,7 @@
           >
             左腿蹬伸力量{{ leftEvaluateText }}，需要加强锻炼，推荐增加{{
               leftTrainRecommend
-            }}%的肌力。
+            }}kg的肌力。
           </div>
           <div
             class="advice__item"
@@ -208,7 +208,7 @@
           >
             右腿蹬伸力量{{ rightEvaluateText }}，需要加强锻炼，推荐增加{{
               rightTrainRecommend
-            }}%的肌力。
+            }}kg的肌力。
           </div>
         </div>
       </div>
@@ -570,46 +570,54 @@ export default {
             this.bothLegSrc = require('@/assets/img/Test/Pdf/肌肉图/绿双腿.jpg')
           }
 
-          /* 计算左腿、右腿的训练推荐增加百分比 */
+          /* 计算左腿、右腿的肌力亏欠值 */
           if (
             this.leftValue < this.singleRecommendedValue &&
-            this.rightValue >= this.singleRecommendedValue
+            this.rightValue < this.singleRecommendedValue
           ) {
             this.leftTrainRecommend = parseFloat(
-              (
-                ((this.rightValue - this.leftValue) / this.leftValue) *
-                100
-              ).toFixed(0)
+              (this.singleRecommendedValue - this.leftValue).toFixed(0)
             )
-            this.rightTrainRecommend = '/'
-          } else if (
-            this.rightValue < this.singleRecommendedValue &&
-            this.leftValue >= this.singleRecommendedValue
-          ) {
             this.rightTrainRecommend = parseFloat(
-              (
-                ((this.leftValue - this.rightValue) / this.rightValue) *
-                100
-              ).toFixed(0)
+              (this.singleRecommendedValue - this.rightValue).toFixed(0)
             )
-            this.leftTrainRecommend = '/'
           } else if (
-            this.leftValue >= this.singleRecommendedValue &&
-            this.rightValue >= this.singleRecommendedValue
+            this.leftValue > this.singleRecommendedValue &&
+            this.rightValue > this.singleRecommendedValue
+          ) {
+            if (this.leftValue > this.rightValue) {
+              this.leftTrainRecommend = '/'
+              this.rightTrainRecommend = parseFloat(
+                (this.leftValue - this.rightValue).toFixed(0)
+              )
+            } else if (this.leftValue < this.rightValue) {
+              this.rightTrainRecommend = '/'
+              this.leftTrainRecommend = parseFloat(
+                (this.rightValue - this.leftValue).toFixed(0)
+              )
+            } else {
+              this.leftTrainRecommend = '/'
+              this.rightTrainRecommend = '/'
+            }
+          } else if (
+            this.leftValue > this.singleRecommendedValue &&
+            this.rightValue < this.singleRecommendedValue
           ) {
             this.leftTrainRecommend = '/'
+            this.rightTrainRecommend = parseFloat(
+              (this.leftValue - this.rightValue).toFixed(0)
+            )
+          } else if (
+            this.leftValue < this.singleRecommendedValue &&
+            this.rightValue > this.singleRecommendedValue
+          ) {
             this.rightTrainRecommend = '/'
+            this.leftTrainRecommend = parseFloat(
+              (this.rightValue - this.leftValue).toFixed(0)
+            )
           } else {
-            this.leftTrainRecommend = parseFloat(
-              ((this.singleRecommendedValue - this.leftValue) /
-                this.leftValue) *
-                100
-            ).toFixed(0)
-            this.rightTrainRecommend = parseFloat(
-              ((this.singleRecommendedValue - this.rightValue) /
-                this.rightValue) *
-                100
-            ).toFixed(0)
+            this.leftTrainRecommend = '/'
+            this.rightTrainRecommend = '/'
           }
         })
         .then(() => {
