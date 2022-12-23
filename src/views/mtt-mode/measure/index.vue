@@ -1,7 +1,7 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2022-07-21 10:27:56
- * @LastEditTime: 2022-12-15 14:06:21
+ * @LastEditTime: 2022-12-22 11:46:25
  * @Description : MTT-具体测量
 -->
 <template>
@@ -76,7 +76,7 @@
           <div class="num-wrapper">
             <div class="title">剩余次数</div>
             <div class="num">
-              <span class="now-num">{{ nowNum }}</span> / {{ num * groupCount }}
+              <span class="now-num">{{ nowNum }}</span> / {{ num * nowGroupCount }}
             </div>
           </div>
         </div>
@@ -170,6 +170,7 @@ export default {
       distanceDataArray: [], // 完整的位移数组
       nowIntervalTime: 0, // 目前的组间隔时间
       nowNum: 0, // 目前的次数
+      nowGroupCount: JSON.parse(this.$route.query.groupCount), // 目前的组数
       pdfTime: null, // 该次训练完成时间
       resultRate: 0, // 最终完成比例
 
@@ -359,9 +360,9 @@ export default {
                   if (this.nowNum === this.num) {
                     this.handleStop()
 
-                    this.groupCount -= 1
+                    this.nowGroupCount -= 1
 
-                    if (this.groupCount > 0) {
+                    if (this.nowGroupCount > 0) {
                       this.nowIntervalTime = this.intervalTime
                       this.dialogVisible = true
                       this.timeClock = setInterval(() => {
@@ -380,7 +381,7 @@ export default {
                   }
 
                   /* 该次训练全部完成 */
-                  if (this.groupCount === 0) {
+                  if (this.nowGroupCount === 0) {
                     if (this.usbPort) {
                       if (this.usbPort.isOpen) {
                         /* 关闭串口通信 */
@@ -555,25 +556,25 @@ export default {
       /* 计算最终参考图形 */
       if (this.trainType === '静态反馈训练') {
         // 开始段
-        for (let i = 0; i <= parseInt((this.time * 5).toFixed(0)); i++) {
+        for (let i = 0; i <= this.time * 5; i++) {
           this.standardGraph.push(this.original)
         }
         // 中间段，这里的15目前是固定的，后续可能会改其他值
         const interval = (this.maxDistance - this.original) / 15 // 间隔值
         let sum = this.original
         for (let i = 0; i < 15; i++) {
-          sum = parseFloat((sum + interval).toFixed(1))
+          sum = parseFloat(sum + interval)
           this.standardGraph.push(sum)
         }
         for (let i = 0; i < this.keepTime * 10; i++) {
           this.standardGraph.push(sum)
         }
         for (let i = 0; i < 14; i++) {
-          sum = parseFloat((sum - interval).toFixed(1))
+          sum = parseFloat(sum - interval)
           this.standardGraph.push(sum)
         }
         // 结束段
-        for (let i = 0; i < parseInt((this.time * 5).toFixed(0)); i++) {
+        for (let i = 0; i < this.time * 5; i++) {
           this.standardGraph.push(this.original)
         }
         // // 最终复制3个
@@ -583,7 +584,7 @@ export default {
         this.referenceGraph = this.standardGraph
       } else {
         // 开始段
-        for (let i = 0; i <= parseInt((this.time * 5).toFixed(0)); i++) {
+        for (let i = 0; i <= this.time * 5; i++) {
           this.standardGraph.push(this.original)
         }
         // 中间段，这里的15目前是固定的，后续可能会改其他值
@@ -593,18 +594,18 @@ export default {
           (this.maxDistance - this.original) / (this.offcenterRate * 15) // 下降间隔值
         let sum = this.original
         for (let i = 0; i < this.entadRate * 15; i++) {
-          sum = parseFloat((sum + intervalUp).toFixed(1))
+          sum = parseFloat(sum + intervalUp)
           this.standardGraph.push(sum)
         }
         for (let i = 0; i < this.keepdRate * 15; i++) {
           this.standardGraph.push(sum)
         }
         for (let i = 0; i < this.offcenterRate * 15 - 1; i++) {
-          sum = parseFloat((sum - intervalDown).toFixed(1))
+          sum = parseFloat(sum - intervalDown)
           this.standardGraph.push(sum)
         }
         // 结束段
-        for (let i = 0; i < parseInt((this.time * 5).toFixed(0)); i++) {
+        for (let i = 0; i < this.time * 5; i++) {
           this.standardGraph.push(this.original)
         }
         // 最终复制3个
@@ -676,6 +677,7 @@ export default {
      * @description: 开始按钮
      */
     handleStart() {
+      this.scShow = true
       this.startAllow = false
       this.pdfAllow = false
 
@@ -687,6 +689,7 @@ export default {
       this.leftWeightAverage = 0
       this.rightWeightAverage = 0
       this.nowNum = 0
+      this.nowGroupCount = this.groupCount
       this.pdfTime = null
       this.resultRate = 0
 

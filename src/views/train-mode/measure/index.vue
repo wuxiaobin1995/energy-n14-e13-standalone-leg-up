@@ -1,7 +1,7 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2022-07-06 11:05:50
- * @LastEditTime: 2022-12-15 14:07:05
+ * @LastEditTime: 2022-12-22 11:48:11
  * @Description : 训练-具体测量
 -->
 <template>
@@ -496,22 +496,22 @@ export default {
       /* 计算最终参考图形 */
       if (this.trainType === '基础训练') {
         // 开始段
-        for (let i = 0; i <= parseInt((this.time * 5).toFixed(0)); i++) {
+        for (let i = 0; i <= this.time * 5; i++) {
           this.standardGraph.push(this.original)
         }
         // 中间段，这里的15目前是固定的，后续可能会改其他值
         const interval = (this.maxDistance - this.original) / 15 // 间隔值
         let sum = this.original
         for (let i = 0; i < 15; i++) {
-          sum = parseFloat((sum + interval).toFixed(1))
+          sum = parseFloat(sum + interval)
           this.standardGraph.push(sum)
         }
         for (let i = 0; i < 14; i++) {
-          sum = parseFloat((sum - interval).toFixed(1))
+          sum = parseFloat(sum - interval)
           this.standardGraph.push(sum)
         }
         // 结束段
-        for (let i = 0; i < parseInt((this.time * 5).toFixed(0)); i++) {
+        for (let i = 0; i < this.time * 5; i++) {
           this.standardGraph.push(this.original)
         }
         // 最终复制3个
@@ -520,25 +520,25 @@ export default {
         }
       } else if (this.trainType === '进阶训练') {
         // 开始段
-        for (let i = 0; i <= parseInt((this.time * 5).toFixed(0)); i++) {
+        for (let i = 0; i <= this.time * 5; i++) {
           this.standardGraph.push(this.original)
         }
         // 中间段，这里的15目前是固定的，后续可能会改其他值
         const interval = (this.maxDistance - this.original) / 15 // 间隔值
         let sum = this.original
         for (let i = 0; i < 15; i++) {
-          sum = parseFloat((sum + interval).toFixed(1))
+          sum = parseFloat(sum + interval)
           this.standardGraph.push(sum)
         }
         for (let i = 0; i < 15; i++) {
           this.standardGraph.push(sum)
         }
         for (let i = 0; i < 14; i++) {
-          sum = parseFloat((sum - interval).toFixed(1))
+          sum = parseFloat(sum - interval)
           this.standardGraph.push(sum)
         }
         // 结束段
-        for (let i = 0; i < parseInt((this.time * 5).toFixed(0)); i++) {
+        for (let i = 0; i < this.time * 5; i++) {
           this.standardGraph.push(this.original)
         }
         // 最终复制3个
@@ -547,7 +547,7 @@ export default {
         }
       } else if (this.trainType === '离心训练') {
         // 开始段
-        for (let i = 0; i <= parseInt((this.time * 5).toFixed(0)); i++) {
+        for (let i = 0; i <= this.time * 5; i++) {
           this.standardGraph.push(this.original)
         }
         // 中间段，这里的15目前是固定的，后续可能会改其他值
@@ -555,18 +555,18 @@ export default {
         const intervalDown = (this.maxDistance - this.original) / 30 // 下降间隔值
         let sum = this.original
         for (let i = 0; i < 15; i++) {
-          sum = parseFloat((sum + intervalUp).toFixed(1))
+          sum = parseFloat(sum + intervalUp)
           this.standardGraph.push(sum)
         }
         for (let i = 0; i < 15; i++) {
           this.standardGraph.push(sum)
         }
         for (let i = 0; i < 29; i++) {
-          sum = parseFloat((sum - intervalDown).toFixed(1))
+          sum = parseFloat(sum - intervalDown)
           this.standardGraph.push(sum)
         }
         // 结束段
-        for (let i = 0; i < parseInt((this.time * 5).toFixed(0)); i++) {
+        for (let i = 0; i < this.time * 5; i++) {
           this.standardGraph.push(this.original)
         }
         // 最终复制3个
@@ -575,7 +575,7 @@ export default {
         }
       } else if (this.trainType === '自定义训练') {
         // 开始段
-        for (let i = 0; i <= parseInt((this.time * 5).toFixed(0)); i++) {
+        for (let i = 0; i <= this.time * 5; i++) {
           this.standardGraph.push(this.original)
         }
         // 中间段，这里的15目前是固定的，后续可能会改其他值
@@ -585,18 +585,18 @@ export default {
           (this.maxDistance - this.original) / (this.offcenterRate * 15) // 下降间隔值
         let sum = this.original
         for (let i = 0; i < this.entadRate * 15; i++) {
-          sum = parseFloat((sum + intervalUp).toFixed(1))
+          sum = parseFloat(sum + intervalUp)
           this.standardGraph.push(sum)
         }
         for (let i = 0; i < this.keepdRate * 15; i++) {
           this.standardGraph.push(sum)
         }
         for (let i = 0; i < this.offcenterRate * 15 - 1; i++) {
-          sum = parseFloat((sum - intervalDown).toFixed(1))
+          sum = parseFloat(sum - intervalDown)
           this.standardGraph.push(sum)
         }
         // 结束段
-        for (let i = 0; i < parseInt((this.time * 5).toFixed(0)); i++) {
+        for (let i = 0; i < this.time * 5; i++) {
           this.standardGraph.push(this.original)
         }
         // 最终复制3个
@@ -668,6 +668,7 @@ export default {
      * @description: 开始按钮
      */
     handleStart() {
+      this.scShow = true
       this.startAllow = false
       this.pdfAllow = false
 
