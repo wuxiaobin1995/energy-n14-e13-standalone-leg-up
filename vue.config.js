@@ -1,7 +1,7 @@
 /*
  * @Author      : Mr.bin
  * @Date        : 2022-06-23 08:53:21
- * @LastEditTime: 2022-12-06 09:53:59
+ * @LastEditTime: 2023-02-03 08:52:15
  * @Description : vue.config.js
  */
 
