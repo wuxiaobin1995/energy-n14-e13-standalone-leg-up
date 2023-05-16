@@ -1,7 +1,7 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2022-06-23 11:07:48
- * @LastEditTime: 2023-02-03 08:52:59
+ * @LastEditTime: 2023-05-16 08:58:11
  * @Description : 顶部栏
 -->
 <template>
@@ -15,6 +15,7 @@
         @click.native="handleToHome"
       ></el-image>
       <span class="text">下肢蹬伸肌力检测软件-单机版 v2.0.0</span>
+      <!-- <span class="text">下肢蹬伸肌力检测软件-单机版</span> -->
     </div>
 
     <!-- 其他 -->
