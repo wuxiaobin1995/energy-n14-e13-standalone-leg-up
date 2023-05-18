@@ -10,7 +10,7 @@ log4js.configure({
   appenders: {
     production: {
       type: 'dateFile', // 日志输出类型，dateFile表示输出到文件
-      filename: 'C:/Energy_Life_Log/下肢蹬伸肌力检测软件-单机版[v2.0.0].log', // 输出到文件的文件路径，注意，是路径而不是文件名
+      filename: 'C:/Energy_Life_Log/下肢医用康复训练系统-单机版.log', // 输出到文件的文件路径，注意，是路径而不是文件名
       alwaysIncludePattern: true, // 日志文件是否展示预设的模式
       keepFileExt: true, // 日志文件是否始终保持后缀
       daysToKeep: 0 // 日志保留几天，默认值为0，表示永久保存

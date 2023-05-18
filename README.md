@@ -1,11 +1,11 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2022-06-23 08:38:05
- * @LastEditTime: 2022-07-26 11:38:41
+ * @LastEditTime: 2023-05-17 15:39:20
  * @Description : energy-n14-e13-standalone-leg-up
 -->
 
-# 下肢蹬伸肌力检测软件-单机版
+# 下肢医用康复训练系统-单机版
 
 ## 基本设备信息
 
