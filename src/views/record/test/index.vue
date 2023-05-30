@@ -1,7 +1,7 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2022-07-25 10:39:59
- * @LastEditTime: 2022-07-25 17:09:37
+ * @LastEditTime: 2023-05-26 17:42:59
  * @Description : 测试数据记录页
 -->
 <template>
@@ -76,14 +76,14 @@
         <el-table-column
           align="center"
           prop="data.goodLegResult"
-          label="优势腿(kg)"
+          label="左腿(kg)"
           width="130"
         />
         <!-- 劣势腿 -->
         <el-table-column
           align="center"
           prop="data.badLegResult"
-          label="劣势腿(kg)"
+          label="右腿(kg)"
           width="130"
         />
         <!-- 删除按钮 -->

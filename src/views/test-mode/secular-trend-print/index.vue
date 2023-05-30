@@ -1,7 +1,7 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2022-07-25 15:34:12
- * @LastEditTime: 2022-07-25 16:28:15
+ * @LastEditTime: 2023-05-26 17:43:20
  * @Description : 测试-长期趋势报告
 -->
 <template>
@@ -155,14 +155,14 @@ export default {
         },
         series: [
           {
-            name: '优势腿',
+            name: '左腿',
             data: this.goodLegResultArray,
             type: 'line',
             smooth: false,
             showSymbol: false
           },
           {
-            name: '劣势腿',
+            name: '右腿',
             data: this.badLegResultArray,
             type: 'line',
             smooth: false,
