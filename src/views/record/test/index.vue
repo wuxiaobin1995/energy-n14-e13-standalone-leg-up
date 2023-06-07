@@ -72,14 +72,14 @@
           label="双腿(kg)"
           width="130"
         />
-        <!-- 优势腿 -->
+        <!-- 左腿 -->
         <el-table-column
           align="center"
           prop="data.goodLegResult"
           label="左腿(kg)"
           width="130"
         />
-        <!-- 劣势腿 -->
+        <!-- 右腿 -->
         <el-table-column
           align="center"
           prop="data.badLegResult"
@@ -417,8 +417,8 @@ export default {
               hospital: '医院',
               pdfTime: '测量时间',
               goodLegResult: '优势腿(kg)',
-              badLegResult: '优势腿(kg)',
-              bothLegResult: '优势腿(kg)'
+              badLegResult: '劣势腿(kg)',
+              bothLegResult: '双腿(kg)'
             }
             const tHeader = Object.values(excelTitle)
             // 会根据key键的顺序、属性值等动态变化
