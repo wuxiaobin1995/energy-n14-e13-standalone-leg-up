@@ -1,7 +1,7 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2022-06-23 08:38:05
- * @LastEditTime: 2023-05-17 15:39:20
+ * @LastEditTime: 2023-06-14 09:14:20
  * @Description : energy-n14-e13-standalone-leg-up
 -->
 
@@ -11,6 +11,7 @@
 
 左 K 值：83.879
 右 K 值：85.138
+PS：负重偏大，K 就往大的调，才能把负重减小
 
 传感器量程：0~500kg
 凳子移动范围为 0~480mm 左右
