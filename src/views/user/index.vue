@@ -1,7 +1,7 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2022-06-24 09:29:49
- * @LastEditTime: 2023-05-17 15:40:08
+ * @LastEditTime: 2023-06-22 17:06:29
  * @Description : 用户
 -->
 <template>
@@ -162,6 +162,9 @@
           icon="el-icon-user"
           @click="handleAddUser"
           >添加用户</el-button
+        >
+        <el-button class="item" type="primary" @click="handleDataOutput"
+          >导出数据</el-button
         >
         <el-button class="item" type="info" @click="handleRefresh"
           >刷 新</el-button
@@ -402,6 +405,15 @@ export default {
     handleAddUser() {
       this.$router.push({
         path: '/user-add'
+      })
+    },
+
+    /**
+     * @description: 导出所选用户的数据（测试、训练、......）
+     */
+    handleDataOutput() {
+      this.$router.push({
+        path: '/user-data-output'
       })
     },
 
