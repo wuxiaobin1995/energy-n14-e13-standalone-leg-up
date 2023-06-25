@@ -1,7 +1,7 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2023-06-22 16:00:59
- * @LastEditTime: 2023-06-22 17:20:10
+ * @LastEditTime: 2023-06-25 21:33:40
  * @Description : 导出所选用户的数据（测试、训练、......）
 -->
 <template>
@@ -454,7 +454,7 @@ export default {
         })
         .catch(() => {
           this.$confirm(
-            `获取train_data表数据失败，请点击刷新按钮重试！`,
+            `获取mtt_data表数据失败，请点击刷新按钮重试！`,
             '提示',
             {
               type: 'warning',
@@ -509,7 +509,7 @@ export default {
     },
 
     /**
-     * @description: 导出mtt数据
+     * @description: 导出MTT分阶数据
      */
     handleMttOutput() {
       if (this.userSelection.length) {
