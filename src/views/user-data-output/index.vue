@@ -1,7 +1,7 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2023-06-22 16:00:59
- * @LastEditTime: 2023-06-25 21:33:40
+ * @LastEditTime: 2023-07-03 14:53:59
  * @Description : 导出所选用户的数据（测试、训练、......）
 -->
 <template>
@@ -104,6 +104,7 @@ export default {
       loading: false, // 加载动画
 
       allUserData: [], // user表的所有用户数据
+
       allTestData: [], // test_data表的所有数据
       allTrainData: [], // train_data表的所有数据
       allMttData: [], // mtt_data表的所有数据
