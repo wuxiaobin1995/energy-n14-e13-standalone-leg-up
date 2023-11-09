@@ -1,7 +1,7 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2022-07-21 10:27:56
- * @LastEditTime: 2022-12-22 11:46:25
+ * @LastEditTime: 2023-11-09 14:05:05
  * @Description : MTT-具体测量
 -->
 <template>
@@ -400,7 +400,7 @@ export default {
                           const relative = Math.abs(
                             this.distanceDataArray[i] - matchArray[i]
                           )
-                          if (relative <= this.original) {
+                          if (relative <= 50) {
                             yesArray.push(relative)
                           }
                         }
