@@ -1,7 +1,7 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2022-07-21 10:27:56
- * @LastEditTime: 2023-11-09 14:05:05
+ * @LastEditTime: 2024-01-08 15:50:31
  * @Description : MTT-具体测量
 -->
 <template>
@@ -76,7 +76,8 @@
           <div class="num-wrapper">
             <div class="title">剩余次数</div>
             <div class="num">
-              <span class="now-num">{{ nowNum }}</span> / {{ num * nowGroupCount }}
+              <span class="now-num">{{ nowNum }}</span> /
+              {{ num * nowGroupCount }}
             </div>
           </div>
         </div>
@@ -98,6 +99,9 @@
         <div class="dialog-value">
           {{ nowIntervalTime }}
         </div>
+        <span slot="footer">
+          <el-button type="primary" @click="handleSkip">跳 过</el-button>
+        </span>
       </el-dialog>
     </div>
   </div>
@@ -671,6 +675,19 @@ export default {
       if (this.myChart) {
         this.myChart.resize()
       }
+    },
+
+    /**
+     * @description: 跳过休息按钮
+     */
+    handleSkip() {
+      /* 清除定时器 */
+      if (this.timeClock) {
+        clearInterval(this.timeClock)
+      }
+      this.nowNum = 0
+      this.dialogVisible = false
+      this.handleContinue()
     },
 
     /**

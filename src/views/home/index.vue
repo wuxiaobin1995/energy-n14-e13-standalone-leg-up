@@ -1,7 +1,7 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2022-06-23 09:06:38
- * @LastEditTime: 2023-06-26 10:51:58
+ * @LastEditTime: 2024-01-08 15:29:36
  * @Description : home
 -->
 <template>
@@ -84,6 +84,13 @@
           @change="handleSwitchChange"
         >
         </el-switch>
+      </div>
+
+      <!-- 设置蹬伸动作范围 -->
+      <div class="set-up">
+        <el-button type="success" size="small" round @click="handleSetUp"
+          >蹬伸动作范围</el-button
+        >
       </div>
 
       <!-- 免责声明 -->
@@ -345,6 +352,15 @@ export default {
     },
 
     /**
+     * @description: 设置蹬伸动作范围
+     */
+    handleSetUp() {
+      this.$router.push({
+        path: '/set-maxDistance'
+      })
+    },
+
+    /**
      * @description: 打开控制台
      */
     handleOpenDev() {
@@ -470,11 +486,18 @@ export default {
       }
     }
 
+    /* 设置蹬伸动作范围 */
+    .set-up {
+      position: absolute;
+      left: 30px;
+      top: 100px;
+    }
+
     /* 免责声明 */
     .disclaimer {
       position: absolute;
       left: 30px;
-      top: 100px;
+      top: 150px;
     }
   }
 

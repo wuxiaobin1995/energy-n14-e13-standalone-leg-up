@@ -1,7 +1,7 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2022-06-24 09:29:49
- * @LastEditTime: 2023-06-22 17:06:29
+ * @LastEditTime: 2024-01-08 15:32:38
  * @Description : 用户
 -->
 <template>
@@ -392,8 +392,11 @@ export default {
               })
             })
             .then(() => {
+              // this.$router.push({
+              //   path: '/home'
+              // })
               this.$router.push({
-                path: '/home'
+                path: '/set-maxDistance'
               })
             })
         })
