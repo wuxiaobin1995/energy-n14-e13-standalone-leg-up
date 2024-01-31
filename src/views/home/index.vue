@@ -1,7 +1,7 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2022-06-23 09:06:38
- * @LastEditTime: 2024-01-08 15:29:36
+ * @LastEditTime: 2024-01-31 17:44:10
  * @Description : home
 -->
 <template>
@@ -355,9 +355,28 @@ export default {
      * @description: 设置蹬伸动作范围
      */
     handleSetUp() {
-      this.$router.push({
-        path: '/set-maxDistance'
-      })
+      if (this.$store.state.currentUserInfo.userId) {
+        this.$router.push({
+          path: '/set-maxDistance'
+        })
+      } else {
+        this.$confirm(
+          `检测到您还没有选择用户，请先到用户页面进行选择！`,
+          '提示',
+          {
+            type: 'warning',
+            center: true,
+            showCancelButton: false,
+            confirmButtonText: '确 定'
+          }
+        )
+          .then(() => {
+            this.$router.push({
+              path: '/user'
+            })
+          })
+          .catch(() => {})
+      }
     },
 
     /**
