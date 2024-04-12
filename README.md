@@ -1,11 +1,11 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2022-06-23 08:38:05
- * @LastEditTime: 2023-06-14 09:14:20
+ * @LastEditTime: 2024-04-10 14:35:16
  * @Description : energy-n14-e13-standalone-leg-up
 -->
 
-# 下肢医用康复训练系统-单机版
+# 下肢医用康复训练软件-单机版
 
 ## 基本设备信息
 

@@ -1,7 +1,7 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2022-12-05 22:27:06
- * @LastEditTime: 2023-05-17 15:39:46
+ * @LastEditTime: 2024-04-10 14:36:18
  * @Description : 游戏
 -->
 <template>
@@ -150,7 +150,7 @@ export default {
         user_name: this.$store.state.currentUserInfo.userName,
         devices_sort: 'lu', // [卧姿：pps]或者[下肢蹬伸：lu]
         exe_path:
-          'C:/Program Files/energy-n14-e13-standalone-leg-up/下肢医用康复训练系统-单机版.exe' // 自己程序的绝对路径
+          'C:/Program Files/energy-n14-e13-standalone-leg-up/下肢医用康复训练软件-单机版.exe' // 自己程序的绝对路径
       })
 
       /* 使用fs库写文件 */

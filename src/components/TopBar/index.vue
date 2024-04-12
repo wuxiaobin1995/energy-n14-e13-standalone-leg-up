@@ -1,7 +1,7 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2022-06-23 11:07:48
- * @LastEditTime: 2024-01-08 15:26:41
+ * @LastEditTime: 2024-04-10 14:35:46
  * @Description : 顶部栏
 -->
 <template>
@@ -14,7 +14,7 @@
         fit="scale-down"
         @click.native="handleToHome"
       ></el-image>
-      <span class="text">下肢医用康复训练系统</span>
+      <span class="text">下肢医用康复训练软件 1.1.0.0</span>
     </div>
 
     <!-- 其他 -->

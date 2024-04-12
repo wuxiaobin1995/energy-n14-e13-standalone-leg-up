@@ -1,7 +1,7 @@
 <!--
  * @Author      : Mr.bin
  * @Date        : 2023-06-22 16:00:59
- * @LastEditTime: 2023-07-03 14:53:59
+ * @LastEditTime: 2024-04-10 14:36:54
  * @Description : 导出所选用户的数据（测试、训练、......）
 -->
 <template>
@@ -225,7 +225,7 @@ export default {
                 header: tHeader, // 表头 必填
                 data: exportData, // 具体数据 必填
                 filename:
-                  '下肢医用康复训练系统-单机版-用户测试数据 ' +
+                  '下肢医用康复训练软件-单机版-用户测试数据 ' +
                   this.$moment().format('YYYY-MM-DD HH_mm_ss'), // 导出文件名，非必填
                 autoWidth: true, // 自适应列宽，非必填
                 bookType: 'xlsx' // 导出格式，非必填
@@ -330,7 +330,7 @@ export default {
                 header: tHeader, // 表头 必填
                 data: exportData, // 具体数据 必填
                 filename:
-                  '下肢医用康复训练系统-单机版-用户训练数据 ' +
+                  '下肢医用康复训练软件-单机版-用户训练数据 ' +
                   this.$moment().format('YYYY-MM-DD HH_mm_ss'), // 导出文件名，非必填
                 autoWidth: true, // 自适应列宽，非必填
                 bookType: 'xlsx' // 导出格式，非必填
@@ -432,7 +432,7 @@ export default {
                 header: tHeader, // 表头 必填
                 data: exportData, // 具体数据 必填
                 filename:
-                  '下肢医用康复训练系统-单机版-用户mtt分阶数据 ' +
+                  '下肢医用康复训练软件-单机版-用户mtt分阶数据 ' +
                   this.$moment().format('YYYY-MM-DD HH_mm_ss'), // 导出文件名，非必填
                 autoWidth: true, // 自适应列宽，非必填
                 bookType: 'xlsx' // 导出格式，非必填
